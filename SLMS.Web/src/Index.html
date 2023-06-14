@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-container div {
+            margin-right: 10px;
+        }
+
+        .flex-container div:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>首页</h2>
+
+    <div class="flex-container">
+        <div>
+            <label for="titleInput">图书名称:</label>
+            <input type="text" id="titleInput" name="titleInput">
+        </div>
+        <div>
+            <label for="authorInput">作者:</label>
+            <input type="text" id="authorInput" name="authorInput">
+        </div>
+        <div>
+            <label for="categoryInput">类别:</label>
+            <select id="categoryInput" name="categoryInput"></select>         
+        </div>
+        <button id="searchButton">查询</button>
+    </div>
+
+    <table class="tbl" id="bookTable">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>作者</th>
+                <th>图书名称</th>
+                <th>当前库存数量</th>
+                <th>总库存数量</th>
+                <th>类别</th>
+                <th>操作</th>    
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div>
+        <label for="perPageSelect">每页显示:</label>
+        <select id="perPageSelect" name="perPageSelect">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <!-- 可根据需要添加其他选项 -->
+        </select>
+        <button id="previousPageButton">上一页</button>
+          <span id="currentPage"></span>
+        <button id="nextPageButton">下一页</button>
+    </div>
+
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+            $(document).ready(function() {
+
+                var $bookTableBody = $('#bookTable tbody');
+                var $searchButton = $('#searchButton');
+                var $previousPageButton = $('#previousPageButton');
+                var $nextPageButton = $('#nextPageButton');
+                var $currentPage = $('#currentPage');
+                var $perPageSelect = $('#perPageSelect');
+
+                var currentPage = 1;
+                var totalPages = 0;
+                var pageSize = parseInt($perPageSelect.val()); 
+               
+                $.ajax({
+                url: 'https://localhost:5001/api/Category/CategoryList', // Replace with the actual API endpoint for fetching categories
+                type: 'GET',
+                success: function (response) {
+                var categorySelect = $('#categoryInput');
+                    response.forEach(function (category) {
+                    categorySelect.append('<option value="' + category.id + '">' + category.categoryName + '</option>');
+                });
+                },
+                error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+                }
+            });
+
+            $searchButton.click(function() {
+                currentPage = 1;
+
+                var formData = {
+                    titleInput: $('input[name="titleInput"]').val(),
+                    authorInput: $('input[name="authorInput"]').val(),
+                    categoryInput: parseInt($('select[name="categoryInput"]').val()),
+                    page: currentPage,
+                    limit: pageSize
+                };
+
+                // 发送搜索请求
+                $.ajax({
+                    url: 'https://localhost:5001/api/Book/Query',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(data) {
+                        $bookTableBody.empty();
+                        data.books.forEach(function(book) {
+                            // 创建每一行的HTML
+                            var row = `<tr>
+                                <td>${book.isbn}</td>
+                                <td>${book.author}</td>
+                                <td>${book.title}</td>
+                                <td>${book.remainingQuantity}</td>
+                                <td>${book.totalQuantity}</td>
+                                <td>${book.categoryName}</td>
+                                <td>
+                                    <a href="borrow.html?id=${book.id}">借阅</a>
+                                    <a href="bookdetail.html?id=${book.id}">详细</a>
+                                </td>
+                            </tr>`;
+                            $bookTableBody.append(row);
+                        });
+
+                        totalPages = Math.ceil(data.totalCount / pageSize);
+                        $currentPage.text(`第 ${currentPage} 页 / 共 ${totalPages} 页`);
+
+                        $previousPageButton.prop('disabled', currentPage === 1);
+                        $nextPageButton.prop('disabled', currentPage === totalPages);
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = `查询失败：${status} ${error}`;
+                        alert(errorMessage);
+                        console.log(errorMessage);
+                    }
+                });
+            });
+
+
+        function loadBooks(page) {
+            var formData = {
+                page: page,
+                limit: pageSize
+         };
+         console.log(formData);
+            $.ajax({
+                url: 'https://localhost:5001/api/Book/BookList',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function(data) {
+                $bookTableBody.empty();
+                data.books.forEach(function(book) {
+                    // Create HTML for each row
+                    var row = `<tr>
+                        <td>${book.isbn}</td>
+                        <td>${book.author}</td>
+                        <td>${book.title}</td>
+                        <td>${book.remainingQuantity}</td>
+                        <td>${book.totalQuantity}</td>
+                        <td>${book.categoryName}</td>
+                        <td>
+                            <a href="borrow.html?id=${book.id}">借阅</a>
+                            <a href="bookdetail.html?id=${book.id}">详细</a>
+                        </td>
+                    </tr>`;
+                    $bookTableBody.append(row);
+                });
+
+                totalPages = Math.ceil(data.totalCount / pageSize);
+                $currentPage.text(`第 ${currentPage} 页 / 共 ${totalPages} 页`);
+
+                $previousPageButton.prop('disabled', currentPage === 1);
+                $nextPageButton.prop('disabled', currentPage === totalPages);
+            },
+
+                error: function(xhr, status, error) {
+                    var errorMessage = `查询失败：${status} ${error}`;
+                    alert(errorMessage);
+                    console.log(errorMessage);
+                }
+            });
+        }
+
+       // 初始化加载第一页的数据
+            loadBooks(currentPage);
+
+          $previousPageButton.click(function() {
+            if (currentPage > 1) {
+                currentPage--;
+                loadBooks(currentPage);
+            }
+        });
+
+        $nextPageButton.click(function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadBooks(currentPage);
+            }
+        });
+        });
+    </script>
+</body>
+</html>

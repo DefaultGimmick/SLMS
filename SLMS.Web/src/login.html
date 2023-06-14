@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>登录</h2>
+  <form id="user-login">
+    <div>
+      <label for="usernumber">工号/学号:</label>
+      <input type="text" id="usernumber" name="usernumber" required>
+    </div>
+    <div>
+      <label for="password">密码:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <input type="submit" value="登录">
+      <button id="register-button">注册</button>
+    </div>
+  </form>
+  <script src="js/jquery-3.6.1.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#user-login').submit(function(event) {
+        event.preventDefault();
+        var formData = {
+          usernumber: $('input[name="usernumber"]').val(),
+          password: $('input[name="password"]').val(),
+        };
+
+        $.ajax({
+          url: 'https://localhost:5001/api/Auth/Login',
+          type: 'POST',
+          data: JSON.stringify(formData),
+          contentType: 'application/json', // 设置请求头部为 JSON
+          success: function(response) {
+            var token = response.access_token;
+            localStorage.setItem('jwtToken', token);
+            alert("登录成功");
+            window.location.href = "index.html";
+          },
+          error: function(xhr, status, error) {
+            // 处理错误
+            console.log(xhr.responseText);
+          }
+        });
+      });
+
+      $('#register-button').click(function() {
+        window.location.href = "register.html";
+      });
+    });
+  </script>
+</body>
+
+</html>

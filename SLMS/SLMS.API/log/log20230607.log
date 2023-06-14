@@ -1,0 +1,38 @@
+2023-06-07 22:10:02.462 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-07 22:10:02.509 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-07 22:10:02.515 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-07 22:10:02.517 +08:00 [INF] Hosting environment: Development
+2023-06-07 22:10:02.520 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS.API
+2023-06-07 22:10:03.671 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/weatherforecast  
+2023-06-07 22:10:03.738 +08:00 [INF] HTTP GET /weatherforecast responded 404 in 19.6425 ms
+2023-06-07 22:10:03.751 +08:00 [INF] Request finished in 83.8718ms 404 
+2023-06-07 22:10:10.667 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/index.html  
+2023-06-07 22:10:10.768 +08:00 [INF] Request finished in 101.2547ms 200 text/html;charset=utf-8
+2023-06-07 22:10:10.787 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js  
+2023-06-07 22:10:10.791 +08:00 [INF] Request finished in 3.8264ms 200 application/javascript; charset=utf-8
+2023-06-07 22:10:10.840 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink  
+2023-06-07 22:10:10.858 +08:00 [INF] Request finished in 18.917ms 200 text/javascript; charset=UTF-8
+2023-06-07 22:10:11.106 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/V1/swagger.json  
+2023-06-07 22:10:11.189 +08:00 [INF] Request finished in 83.5069ms 200 application/json;charset=utf-8
+2023-06-07 22:10:14.965 +08:00 [INF] Application is shutting down...
+2023-06-07 22:54:44.900 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-07 22:54:44.937 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-07 22:54:44.939 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-07 22:54:44.940 +08:00 [INF] Hosting environment: Development
+2023-06-07 22:54:44.941 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS.API
+2023-06-07 22:54:46.790 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/weatherforecast  
+2023-06-07 22:54:46.983 +08:00 [INF] HTTP GET /weatherforecast responded 404 in 48.7570 ms
+2023-06-07 22:54:47.011 +08:00 [INF] Request finished in 234.0169ms 404 
+2023-06-07 22:55:17.689 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-07 22:55:17.733 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-07 22:55:17.734 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-07 22:55:17.736 +08:00 [INF] Hosting environment: Development
+2023-06-07 22:55:17.737 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS.API
+2023-06-07 22:55:19.026 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/index.html  
+2023-06-07 22:55:19.425 +08:00 [INF] Request finished in 402.1863ms 200 text/html;charset=utf-8
+2023-06-07 22:55:19.459 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js  
+2023-06-07 22:55:19.483 +08:00 [INF] Request finished in 24.0505ms 200 application/javascript; charset=utf-8
+2023-06-07 22:55:19.541 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink  
+2023-06-07 22:55:19.593 +08:00 [INF] Request finished in 52.5941ms 200 text/javascript; charset=UTF-8
+2023-06-07 22:55:19.975 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/V1/swagger.json  
+2023-06-07 22:55:20.062 +08:00 [INF] Request finished in 87.7085ms 200 application/json;charset=utf-8

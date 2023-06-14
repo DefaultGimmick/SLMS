@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<body>
+    <div>
+        <h2>图书详细</h2>
+
+        <div id="bookDetails">
+            <p><span class="label">图书名称:</span> <span id="title"></span></p>
+            <p><span class="label">ISBN:</span> <span id="isbn"></span></p>
+            <p><span class="label">作者:</span> <span id="author"></span></p>
+            <p><span class="label">出版社:</span> <span id="publisher"></span></p>
+            <p><span class="label">价格:</span> <span id="price"></span></p>
+            <p><span class="label">当前库存数量:</span> <span id="remainingQuantity"></span></p>
+            <p><span class="label">总库存数量:</span> <span id="totalQuantity"></span></p>
+            <p><span class="label">类别名称:</span> <span id="categoryName"></span></p>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 获取 URL 参数中的图书 ID
+            var urlParams = new URLSearchParams(window.location.search);
+            var bookId = urlParams.get('id');
+
+            if (bookId) {
+                $.ajax({
+                    url: 'https://localhost:5001/api/Book/BookDetails/' + bookId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        // 填充图书详细信息
+                        $('#title').text(data.title);
+                        $('#isbn').text(data.isbn);
+                        $('#author').text(data.author);
+                        $('#publisher').text(data.publisher);
+                        $('#price').text(data.price);
+                        $('#remainingQuantity').text(data.remainingQuantity);
+                        $('#totalQuantity').text(data.totalQuantity);
+                        $('#categoryName').text(data.categoryName);
+                        alert("查询成功");
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = '查询失败：' + status + ' ' + error;
+                        alert(errorMessage);
+                        console.log(errorMessage);
+                    }
+                });
+            } else {
+                // 如果没有提供图书 ID，则显示错误信息
+                $('#bookDetails').html('<p>No book ID provided.</p>');
+            }
+        });
+    </script>
+</body>
+</html>

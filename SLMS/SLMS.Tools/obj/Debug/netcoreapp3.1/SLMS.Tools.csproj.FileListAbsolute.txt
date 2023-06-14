@@ -1,0 +1,10 @@
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\bin\Debug\netcoreapp3.1\SLMS.Tools.deps.json
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\bin\Debug\netcoreapp3.1\SLMS.Tools.dll
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\bin\Debug\netcoreapp3.1\SLMS.Tools.pdb
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.AssemblyInfo.cs
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.dll
+C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.Tools\obj\Debug\netcoreapp3.1\SLMS.Tools.pdb

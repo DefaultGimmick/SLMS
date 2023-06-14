@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>图书入库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>图书入库</h2>
+  <form id="book-form">
+    <div>
+      <label for="title">图书名称:</label>
+      <input type="text" id="title" name="title">
+      
+      <label for="isbn">ISBN:</label>
+      <input type="text" id="isbn" name="isbn">
+    </div>
+    
+    <div>
+      <label for="price">价格:</label>
+      <input type="text" id="price" name="price">
+      
+      <label for="category">类别:</label>
+      <select id="categoryId" name="categoryId"></select>
+    </div>
+    
+    <div>
+      <label for="author">作者:</label>
+      <input type="text" id="author" name="author">
+      
+      <label for="publisher">出版社:</label>
+      <input type="text" id="publisher" name="publisher">
+    </div>
+    
+    <div>
+      <label for="totalQuantity">数量:</label>
+      <input type="text" id="totalQuantity" name="totalQuantity">
+      
+      <label for="shelfNumber">书架号:</label>
+      <input type="text" id="bookShelfNumber" name="bookShelfNumber">
+    </div>
+
+    <input type="submit" value="提交">
+  </form> 
+   <script src="js/jquery-3.6.1.js"></script>
+   <script>
+        $(document).ready(function () {
+          var token = localStorage.getItem('jwtToken');
+
+          $.ajax({
+          url: 'https://localhost:5001/api/Category/CategoryList', // Replace with the actual API endpoint for fetching categories
+          type: 'GET',
+          success: function (response) {
+          var categorySelect = $('#categoryId');
+          // Populate the dropdown list with categories
+            response.forEach(function (category) {
+            categorySelect.append('<option value="' + category.id + '">' + category.categoryName + '</option>');
+          });
+        },
+          error: function (xhr, status, error) {
+          // Handle error
+          console.log(xhr.responseText);
+        }
+      });
+
+       $('#book-form').submit(function (event) {
+
+         event.preventDefault();
+         var formData = {
+            title:$('input[name="title"]').val(),
+            isbn: $('input[name="isbn"]').val(),
+            price: parseFloat($('input[name="price"]').val()),
+            categoryId: parseInt($('select[name="categoryId"]').val()),
+            author:$('input[name="author"]').val(),
+            publisher:$('input[name="publisher"]').val(),
+            totalQuantity:parseInt($('input[name="totalQuantity"]').val()),
+            bookShelfNumber:parseInt($('input[name="bookShelfNumber"]').val())
+          };
+         console.log(formData);
+         $.ajax({
+           url: 'https://localhost:5001/api/Book/Inventory',
+           type: 'POST',
+           contentType: 'application/json',
+           data: JSON.stringify(formData),
+           beforeSend: function (request) {
+                //Bearer后面一定要加一个空格
+                request.setRequestHeader("Authorization", "Bearer " + token)
+            },
+           success: function (response) {
+             alert("入库成功");
+             window.location.href = "index.html"; // 注册成功后跳转到登录页面
+           },
+           error: function (xhr, status, error) {
+             // 处理错误
+             if (xhr.status === 401) {
+               alert('用户信息已过期，请重新登录');
+               window.location.href = 'login.html';
+            } else {
+               alert('查询失败：' + status);
+            }
+           }
+         });
+       });
+     });
+   </script>
+
+</body>
+</html>

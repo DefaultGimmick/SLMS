@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借阅图书</title>
+</head>
+<body>
+    <h2>借阅图书</h2>
+
+    <form id="user-borrow">
+        <div>
+          <label for="title">图书名称:</label>
+          <input type="text" id="title" name="title">
+          
+          <label for="author">作者:</label>
+          <input type="text" id="author" name="author">
+        </div>
+        
+        <div>
+          <label for="isbn">ISBN:</label>
+          <input type="text" id="isbn" name="isbn">
+
+          <label for="publisher">出版社:</label>
+          <input type="text" id="publisher" name="publisher">
+        </div>       
+        
+        <div>
+          <label for="usenumber">学号:</label>
+          <input type="text" id="userNumber" name="userNumber">
+          
+          <label for="username">姓名:</label>
+          <input type="text" id="userName" name="userName">
+        </div>
+    
+        <input type="submit" value="提交">
+      </form>
+
+      <script src="js/jquery-3.6.1.js"></script>
+      <script>
+        var urlParams = new URLSearchParams(window.location.search); 
+        var bookId = urlParams.get('id');
+        var token = localStorage.getItem('jwtToken');
+
+        $.ajax({
+          url: 'https://localhost:5001/api/Book/Borrow/' + bookId,
+          type: 'GET',
+          dataType: 'text',
+          contentType: 'application/json',
+          beforeSend: function (request) {
+              //Bearer后面一定要加一个空格
+              request.setRequestHeader("Authorization", "Bearer " + token)
+          },
+          success: function(bookJson) {
+              var book = JSON.parse(bookJson);
+              console.log(book);
+              // 将图书信息填充到表单中
+              $('#title').val(book.title);
+              $('#author').val(book.author);
+              $('#isbn').val(book.isbn);
+              $('#publisher').val(book.publisher);
+              $('#userNumber').val(book.userNumber);
+              $('#userName').val(book.userName);
+          },
+          error: function(xhr, status, error) {
+            if (xhr.status === 401) {
+               alert('用户信息已过期，请重新登录');
+               window.location.href = 'login.html';
+            } else {
+               alert('查询失败：' + status);
+            }
+          }       
+      });
+      $(document).ready(function () {
+            $('#user-borrow').submit(function (event) {
+                event.preventDefault();
+                var formData = {
+                    isbn: $('input[name="isbn"]').val(),
+                };
+
+                $.ajax({
+                    url: 'https://localhost:5001/api/Book/Borrow/',
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json', // 设置请求头部为 JSON
+                    beforeSend: function (request) {
+                    //Bearer后面一定要加一个空格
+                    request.setRequestHeader("Authorization", "Bearer " + token)
+                 },
+                    success: function (response) {
+                        var token = response.access_token;
+                        localStorage.setItem('jwtToken', token);
+                        alert("借阅成功");
+                        window.location.href = "index.html";
+                    },
+                    error: function (xhr, status, error) {
+                      // 处理错误
+                      console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+      </script>
+      
+    </body>
+</body>
+</html>
