@@ -1,0 +1,11 @@
+2023-06-16 16:52:44.598 +08:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 16:52:44.939 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-16 16:52:44.940 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-16 16:52:44.942 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-16 16:52:44.944 +08:00 [INF] Hosting environment: Development
+2023-06-16 16:52:44.945 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.API
+2023-06-16 16:52:46.589 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/index.html  
+2023-06-16 16:52:46.736 +08:00 [INF] Request finished in 149.8171ms 200 text/html;charset=utf-8
+2023-06-16 16:52:47.533 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/V1/swagger.json  
+2023-06-16 16:52:47.646 +08:00 [INF] Request finished in 112.8448ms 200 application/json;charset=utf-8
+2023-06-16 16:53:46.501 +08:00 [INF] Application is shutting down...

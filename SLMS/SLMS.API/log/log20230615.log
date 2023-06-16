@@ -1,0 +1,964 @@
+2023-06-15 11:29:02.277 +08:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 11:29:02.739 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-15 11:29:02.745 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-15 11:29:02.747 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-15 11:29:02.748 +08:00 [INF] Hosting environment: Development
+2023-06-15 11:29:02.749 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.API
+2023-06-15 11:29:07.528 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/index.html  
+2023-06-15 11:29:07.860 +08:00 [INF] Request finished in 335.3957ms 200 text/html;charset=utf-8
+2023-06-15 11:29:08.207 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js  
+2023-06-15 11:29:08.207 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink  
+2023-06-15 11:29:08.211 +08:00 [INF] Request finished in 3.8167ms 200 application/javascript; charset=utf-8
+2023-06-15 11:29:08.283 +08:00 [INF] Request finished in 75.3203ms 200 text/javascript; charset=UTF-8
+2023-06-15 11:29:08.518 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/V1/swagger.json  
+2023-06-15 11:29:08.612 +08:00 [INF] Request finished in 94.9918ms 200 application/json;charset=utf-8
+2023-06-15 11:30:02.486 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:02.542 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/Category/CategoryList  
+2023-06-15 11:30:02.813 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:02.813 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:02.830 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 262.9557 ms
+2023-06-15 11:30:02.971 +08:00 [INF] Request finished in 486.034ms 204 
+2023-06-15 11:30:02.993 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:03.041 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:03.339 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:03.339 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:30:04.071 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:04.071 +08:00 [INF] Route matched with {action = "GetCategoryList", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[SLMS.Models.Dtos.Category.CategoryDto]]] GetCategoryList() on controller SLMS.API.Controllers.CategoryController (SLMS.API).
+2023-06-15 11:30:04.922 +08:00 [WRN] No type was specified for the decimal column 'Price' on entity type 'EntityBook'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2023-06-15 11:30:04.952 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:04.952 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:05.481 +08:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+2023-06-15 11:30:05.481 +08:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryName]
+FROM [TB_Category] AS [t]
+2023-06-15 11:30:05.527 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SLMS.Models.Dtos.Category.CategoryDto, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 11:30:05.537 +08:00 [INF] Executed action SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API) in 1450.8528ms
+2023-06-15 11:30:05.540 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:30:05.544 +08:00 [INF] HTTP GET /api/Category/CategoryList responded 200 in 2990.6023 ms
+2023-06-15 11:30:05.559 +08:00 [INF] Request finished in 3016.834ms 200 application/json; charset=utf-8
+2023-06-15 11:30:05.748 +08:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:05.760 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:05.767 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 1688.4196ms
+2023-06-15 11:30:05.771 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:05.775 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 2778.1903 ms
+2023-06-15 11:30:05.779 +08:00 [INF] Request finished in 2786.3972ms 200 application/json; charset=utf-8
+2023-06-15 11:30:07.446 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:30:07.448 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:07.449 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.5550 ms
+2023-06-15 11:30:07.452 +08:00 [INF] Request finished in 6.3507ms 204 
+2023-06-15 11:30:07.457 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:30:07.460 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:07.464 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:07.470 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:07.511 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:07.577 +08:00 [INF] Executed DbCommand (45ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:07.589 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:07.602 +08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:07.606 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:07.608 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 132.7673ms
+2023-06-15 11:30:07.611 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:07.612 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 152.2047 ms
+2023-06-15 11:30:07.615 +08:00 [INF] Request finished in 158.5128ms 200 application/json; charset=utf-8
+2023-06-15 11:30:09.376 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:09.379 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:09.380 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.2147 ms
+2023-06-15 11:30:09.384 +08:00 [INF] Request finished in 7.9296ms 204 
+2023-06-15 11:30:09.390 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:09.392 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:09.393 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:09.395 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:09.428 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:09.433 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:09.437 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:09.438 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 40.5509ms
+2023-06-15 11:30:09.440 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:09.442 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 50.1813 ms
+2023-06-15 11:30:09.444 +08:00 [INF] Request finished in 53.8297ms 200 application/json; charset=utf-8
+2023-06-15 11:30:10.526 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:10.528 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:10.530 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:10.532 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:10.579 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:10.584 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:10.587 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:10.590 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 55.4171ms
+2023-06-15 11:30:10.592 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:10.594 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 65.6769 ms
+2023-06-15 11:30:10.596 +08:00 [INF] Request finished in 71.2062ms 200 application/json; charset=utf-8
+2023-06-15 11:30:13.022 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:30:13.024 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:13.025 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.1766 ms
+2023-06-15 11:30:13.027 +08:00 [INF] Request finished in 5.4645ms 204 
+2023-06-15 11:30:13.030 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:30:13.032 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:13.034 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:13.035 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:13.039 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:13.047 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:13.052 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:13.056 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:13.059 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:13.061 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 23.5916ms
+2023-06-15 11:30:13.064 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:13.066 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 34.0338 ms
+2023-06-15 11:30:13.068 +08:00 [INF] Request finished in 38.0199ms 200 application/json; charset=utf-8
+2023-06-15 11:30:15.846 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:15.848 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:15.849 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.3039 ms
+2023-06-15 11:30:15.852 +08:00 [INF] Request finished in 6.0766ms 204 
+2023-06-15 11:30:15.855 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:15.857 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:15.858 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:15.860 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:15.902 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:15.907 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:15.910 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:15.911 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 48.4902ms
+2023-06-15 11:30:15.915 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:15.917 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 59.9685 ms
+2023-06-15 11:30:15.919 +08:00 [INF] Request finished in 64.28ms 200 application/json; charset=utf-8
+2023-06-15 11:30:17.852 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:17.855 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:17.857 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:17.860 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:17.901 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:17.908 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:17.912 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:17.915 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 50.0906ms
+2023-06-15 11:30:17.917 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:17.919 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 64.2372 ms
+2023-06-15 11:30:17.923 +08:00 [INF] Request finished in 71.1768ms 200 application/json; charset=utf-8
+2023-06-15 11:30:19.822 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:19.824 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:19.825 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:19.827 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:19.859 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:19.863 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:19.866 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:19.869 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 38.2715ms
+2023-06-15 11:30:19.871 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:19.873 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 48.6544 ms
+2023-06-15 11:30:19.875 +08:00 [INF] Request finished in 52.707ms 200 application/json; charset=utf-8
+2023-06-15 11:30:21.106 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:21.108 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:21.109 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.1223 ms
+2023-06-15 11:30:21.111 +08:00 [INF] Request finished in 4.9664ms 204 
+2023-06-15 11:30:21.115 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:21.116 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:21.118 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:21.120 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:21.146 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:21.151 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:21.154 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:21.155 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 33.5164ms
+2023-06-15 11:30:21.158 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:21.159 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 42.6827 ms
+2023-06-15 11:30:21.162 +08:00 [INF] Request finished in 47.1833ms 200 application/json; charset=utf-8
+2023-06-15 11:30:23.750 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:30:23.752 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:23.754 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.3327 ms
+2023-06-15 11:30:23.756 +08:00 [INF] Request finished in 5.597ms 204 
+2023-06-15 11:30:23.759 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:30:23.762 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:23.764 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:23.765 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:23.769 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:23.775 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:23.781 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:23.786 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:23.789 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:23.791 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 23.6468ms
+2023-06-15 11:30:23.794 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:23.795 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 33.3216 ms
+2023-06-15 11:30:23.797 +08:00 [INF] Request finished in 38.9314ms 200 application/json; charset=utf-8
+2023-06-15 11:30:27.151 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/Category/CategoryList  
+2023-06-15 11:30:27.151 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:27.153 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:27.154 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:27.156 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:30:27.157 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 2.5655 ms
+2023-06-15 11:30:27.162 +08:00 [INF] Request finished in 10.2112ms 204 
+2023-06-15 11:30:27.164 +08:00 [INF] Route matched with {action = "GetCategoryList", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[SLMS.Models.Dtos.Category.CategoryDto]]] GetCategoryList() on controller SLMS.API.Controllers.CategoryController (SLMS.API).
+2023-06-15 11:30:27.165 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:27.170 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:27.171 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:27.179 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:27.180 +08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryName]
+FROM [TB_Category] AS [t]
+2023-06-15 11:30:27.182 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:27.189 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SLMS.Models.Dtos.Category.CategoryDto, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 11:30:27.196 +08:00 [INF] Executed action SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API) in 26.7989ms
+2023-06-15 11:30:27.202 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:30:27.204 +08:00 [INF] HTTP GET /api/Category/CategoryList responded 200 in 50.6695 ms
+2023-06-15 11:30:27.206 +08:00 [INF] Request finished in 55.1464ms 200 application/json; charset=utf-8
+2023-06-15 11:30:27.223 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:27.227 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:27.230 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:27.232 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 39.9565ms
+2023-06-15 11:30:27.234 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:27.235 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 63.8578 ms
+2023-06-15 11:30:27.237 +08:00 [INF] Request finished in 71.9474ms 200 application/json; charset=utf-8
+2023-06-15 11:30:31.394 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:31.395 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:31.397 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:31.398 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:31.424 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:31.428 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:31.431 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:31.434 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 33.4817ms
+2023-06-15 11:30:31.436 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:31.437 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 42.1058 ms
+2023-06-15 11:30:31.440 +08:00 [INF] Request finished in 45.9463ms 200 application/json; charset=utf-8
+2023-06-15 11:30:33.447 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:33.448 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:33.449 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.1133 ms
+2023-06-15 11:30:33.451 +08:00 [INF] Request finished in 4.7929ms 204 
+2023-06-15 11:30:33.454 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:33.456 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:33.457 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:33.459 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:33.486 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:33.490 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:33.494 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:33.496 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 32.837ms
+2023-06-15 11:30:33.498 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:33.499 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 43.1221 ms
+2023-06-15 11:30:33.501 +08:00 [INF] Request finished in 47.0437ms 200 application/json; charset=utf-8
+2023-06-15 11:30:35.986 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:30:35.989 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:35.990 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.1920 ms
+2023-06-15 11:30:35.992 +08:00 [INF] Request finished in 6.0014ms 204 
+2023-06-15 11:30:35.996 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:30:35.998 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:35.999 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:36.000 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:36.006 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:36.014 +08:00 [INF] Executed DbCommand (4ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:36.019 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:36.026 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:30:36.031 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:36.033 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 28.1561ms
+2023-06-15 11:30:36.038 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:30:36.040 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 41.9878 ms
+2023-06-15 11:30:36.042 +08:00 [INF] Request finished in 45.986ms 200 application/json; charset=utf-8
+2023-06-15 11:30:39.487 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:30:39.489 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:39.490 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.6154 ms
+2023-06-15 11:30:39.493 +08:00 [INF] Request finished in 5.4661ms 204 
+2023-06-15 11:30:39.497 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:39.498 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:39.499 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:39.502 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:39.530 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:39.535 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:39.538 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:39.540 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 34.0813ms
+2023-06-15 11:30:39.544 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:39.548 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 49.4318 ms
+2023-06-15 11:30:39.550 +08:00 [INF] Request finished in 53.889ms 200 application/json; charset=utf-8
+2023-06-15 11:30:42.916 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:30:42.918 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:30:42.919 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:42.921 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:30:42.952 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:30:42.957 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:30:42.960 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:30:42.962 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 38.9975ms
+2023-06-15 11:30:42.964 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:30:42.966 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 47.7723 ms
+2023-06-15 11:30:42.968 +08:00 [INF] Request finished in 51.6914ms 200 application/json; charset=utf-8
+2023-06-15 11:32:10.683 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/Category/CategoryList  
+2023-06-15 11:32:10.685 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:32:10.687 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:10.688 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:10.691 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:32:10.692 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 3.1827 ms
+2023-06-15 11:32:10.693 +08:00 [INF] Route matched with {action = "GetCategoryList", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[SLMS.Models.Dtos.Category.CategoryDto]]] GetCategoryList() on controller SLMS.API.Controllers.CategoryController (SLMS.API).
+2023-06-15 11:32:10.696 +08:00 [INF] Request finished in 10.6462ms 204 
+2023-06-15 11:32:10.698 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:10.700 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:10.701 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:10.705 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:10.706 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryName]
+FROM [TB_Category] AS [t]
+2023-06-15 11:32:10.707 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:10.710 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SLMS.Models.Dtos.Category.CategoryDto, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 11:32:10.715 +08:00 [INF] Executed action SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API) in 16.7511ms
+2023-06-15 11:32:10.724 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:32:10.726 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:10.727 +08:00 [INF] HTTP GET /api/Category/CategoryList responded 200 in 39.6204 ms
+2023-06-15 11:32:10.731 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+2023-06-15 11:32:10.733 +08:00 [INF] Request finished in 49.3177ms 200 application/json; charset=utf-8
+2023-06-15 11:32:10.791 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:10.794 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:10.796 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 83.4939ms
+2023-06-15 11:32:10.797 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:10.799 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 97.5010 ms
+2023-06-15 11:32:10.801 +08:00 [INF] Request finished in 102.7303ms 200 application/json; charset=utf-8
+2023-06-15 11:32:12.906 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:12.910 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:12.912 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:12.914 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:12.948 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:12.953 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:12.956 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:12.958 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 38.4769ms
+2023-06-15 11:32:12.962 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:12.963 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 52.8567 ms
+2023-06-15 11:32:12.965 +08:00 [INF] Request finished in 59.748ms 200 application/json; charset=utf-8
+2023-06-15 11:32:13.920 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:13.922 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:13.924 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:13.925 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:13.962 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:13.966 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:13.969 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:13.971 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 43.3668ms
+2023-06-15 11:32:13.973 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:13.974 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 52.1539 ms
+2023-06-15 11:32:13.976 +08:00 [INF] Request finished in 56.4206ms 200 application/json; charset=utf-8
+2023-06-15 11:32:15.125 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:15.127 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:15.128 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:15.129 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:15.155 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:15.158 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:15.161 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:15.163 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 30.0675ms
+2023-06-15 11:32:15.165 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:15.166 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 39.5355 ms
+2023-06-15 11:32:15.168 +08:00 [INF] Request finished in 43.6815ms 200 application/json; charset=utf-8
+2023-06-15 11:32:16.202 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:32:16.203 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:16.204 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.1033 ms
+2023-06-15 11:32:16.207 +08:00 [INF] Request finished in 4.9751ms 204 
+2023-06-15 11:32:16.209 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:16.211 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:16.212 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:16.214 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:16.256 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:16.259 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:16.262 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:16.265 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 48.5539ms
+2023-06-15 11:32:16.267 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:16.269 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 58.3909 ms
+2023-06-15 11:32:16.271 +08:00 [INF] Request finished in 62.3783ms 200 application/json; charset=utf-8
+2023-06-15 11:32:17.307 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:17.309 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:17.310 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:17.312 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:17.338 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:17.342 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:17.346 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:17.348 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 33.292ms
+2023-06-15 11:32:17.350 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:17.352 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 43.1852 ms
+2023-06-15 11:32:17.354 +08:00 [INF] Request finished in 47.1856ms 200 application/json; charset=utf-8
+2023-06-15 11:32:18.533 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:32:18.535 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:18.536 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.0592 ms
+2023-06-15 11:32:18.538 +08:00 [INF] Request finished in 4.6808ms 204 
+2023-06-15 11:32:18.541 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:18.542 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:18.543 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:18.546 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:18.549 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:18.554 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:18.559 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:18.564 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:18.567 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:18.569 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 20.4034ms
+2023-06-15 11:32:18.571 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:18.572 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 30.1215 ms
+2023-06-15 11:32:18.574 +08:00 [INF] Request finished in 33.7263ms 200 application/json; charset=utf-8
+2023-06-15 11:32:20.541 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:20.543 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:20.544 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:20.547 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:20.551 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:20.556 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:20.560 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:20.564 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:20.567 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:20.568 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 18.6448ms
+2023-06-15 11:32:20.570 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:20.572 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 28.7704 ms
+2023-06-15 11:32:20.574 +08:00 [INF] Request finished in 33.2724ms 200 application/json; charset=utf-8
+2023-06-15 11:32:23.733 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:32:23.735 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:23.736 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.0196 ms
+2023-06-15 11:32:23.738 +08:00 [INF] Request finished in 4.3861ms 204 
+2023-06-15 11:32:23.741 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:23.744 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:23.745 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:23.747 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:23.750 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:23.755 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:23.759 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:23.763 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:23.766 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:23.768 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 18.4219ms
+2023-06-15 11:32:23.770 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:23.772 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 28.2734 ms
+2023-06-15 11:32:23.774 +08:00 [INF] Request finished in 33.1946ms 200 application/json; charset=utf-8
+2023-06-15 11:32:25.151 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:25.156 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:25.158 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:25.161 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:25.165 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:25.170 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:25.176 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:25.181 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:25.184 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:25.186 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 21.2929ms
+2023-06-15 11:32:25.189 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:25.191 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 34.6336 ms
+2023-06-15 11:32:25.193 +08:00 [INF] Request finished in 42.4387ms 200 application/json; charset=utf-8
+2023-06-15 11:32:25.908 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:25.910 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:25.911 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:25.912 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:25.915 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:25.920 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:25.925 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:25.929 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:25.932 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:25.934 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 19.1686ms
+2023-06-15 11:32:25.936 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:25.937 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 27.5075 ms
+2023-06-15 11:32:25.940 +08:00 [INF] Request finished in 31.8817ms 200 application/json; charset=utf-8
+2023-06-15 11:32:26.832 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:26.836 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:26.838 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:26.841 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:26.850 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:26.854 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:26.859 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:26.863 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:26.866 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:26.868 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 19.0954ms
+2023-06-15 11:32:26.870 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:26.871 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 35.6172 ms
+2023-06-15 11:32:26.873 +08:00 [INF] Request finished in 41.3863ms 200 application/json; charset=utf-8
+2023-06-15 11:32:28.840 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:32:28.842 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:28.843 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.0371 ms
+2023-06-15 11:32:28.845 +08:00 [INF] Request finished in 4.566ms 204 
+2023-06-15 11:32:28.847 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:28.849 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:28.850 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:28.851 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:28.856 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:28.862 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:28.867 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:28.872 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:28.876 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:28.877 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 21.8943ms
+2023-06-15 11:32:28.881 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:28.883 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 33.7779 ms
+2023-06-15 11:32:28.885 +08:00 [INF] Request finished in 37.3421ms 200 application/json; charset=utf-8
+2023-06-15 11:32:30.587 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:30.589 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:30.590 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:30.592 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:30.596 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:30.602 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:30.607 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:30.612 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:30.615 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:30.617 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 21.7879ms
+2023-06-15 11:32:30.620 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:30.622 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 33.5417 ms
+2023-06-15 11:32:30.625 +08:00 [INF] Request finished in 39.1324ms 200 application/json; charset=utf-8
+2023-06-15 11:32:32.470 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:32.472 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:32.473 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:32.475 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:32.478 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:32.484 +08:00 [INF] Executed DbCommand (4ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:32.489 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:32.493 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:32.495 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:32.497 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 19.8985ms
+2023-06-15 11:32:32.499 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:32.501 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 28.4827 ms
+2023-06-15 11:32:32.503 +08:00 [INF] Request finished in 33.0383ms 200 application/json; charset=utf-8
+2023-06-15 11:32:34.144 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:32:34.145 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:34.146 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.0586 ms
+2023-06-15 11:32:34.149 +08:00 [INF] Request finished in 5.4281ms 204 
+2023-06-15 11:32:34.152 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:34.153 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:34.156 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:34.157 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:34.160 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:34.165 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:34.171 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:34.176 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:34.179 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:34.181 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 20.9549ms
+2023-06-15 11:32:34.184 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:34.186 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 32.7222 ms
+2023-06-15 11:32:34.188 +08:00 [INF] Request finished in 36.6228ms 200 application/json; charset=utf-8
+2023-06-15 11:32:40.357 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:32:40.359 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:40.360 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.0822 ms
+2023-06-15 11:32:40.362 +08:00 [INF] Request finished in 4.6636ms 204 
+2023-06-15 11:32:40.364 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:40.366 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:40.367 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:40.369 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:40.393 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:40.396 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:40.398 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:40.400 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 28.4845ms
+2023-06-15 11:32:40.402 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:40.404 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 38.1149 ms
+2023-06-15 11:32:40.406 +08:00 [INF] Request finished in 41.5315ms 200 application/json; charset=utf-8
+2023-06-15 11:32:41.687 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:32:41.689 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:41.690 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:41.691 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:41.725 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:41.728 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:41.730 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:41.732 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 38.3557ms
+2023-06-15 11:32:41.734 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:32:41.735 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 46.6215 ms
+2023-06-15 11:32:41.737 +08:00 [INF] Request finished in 50.3183ms 200 application/json; charset=utf-8
+2023-06-15 11:32:47.861 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:32:47.863 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:47.864 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.0942 ms
+2023-06-15 11:32:47.866 +08:00 [INF] Request finished in 5.4002ms 204 
+2023-06-15 11:32:47.870 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:32:47.871 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:32:47.872 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:47.874 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:32:47.877 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:32:47.883 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:47.888 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:32:47.892 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:32:47.895 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:32:47.897 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 20.4202ms
+2023-06-15 11:32:47.899 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:32:47.901 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 29.8555 ms
+2023-06-15 11:32:47.903 +08:00 [INF] Request finished in 33.7027ms 200 application/json; charset=utf-8
+2023-06-15 11:34:54.229 +08:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 11:34:54.563 +08:00 [INF] Now listening on: https://localhost:5001
+2023-06-15 11:34:54.564 +08:00 [INF] Now listening on: http://localhost:5000
+2023-06-15 11:34:54.566 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-15 11:34:54.567 +08:00 [INF] Hosting environment: Development
+2023-06-15 11:34:54.568 +08:00 [INF] Content root path: C:\Users\Admin\Desktop\SLMS\SLMS\SLMS.API
+2023-06-15 11:34:56.671 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/index.html  
+2023-06-15 11:34:56.982 +08:00 [INF] Request finished in 316.7916ms 200 text/html;charset=utf-8
+2023-06-15 11:34:57.418 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js  
+2023-06-15 11:34:57.424 +08:00 [INF] Request finished in 5.2647ms 200 application/javascript; charset=utf-8
+2023-06-15 11:34:58.018 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/V1/swagger.json  
+2023-06-15 11:34:58.100 +08:00 [INF] Request finished in 82.4825ms 200 application/json;charset=utf-8
+2023-06-15 11:42:26.584 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/Category/CategoryList  
+2023-06-15 11:42:26.584 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:42:26.632 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:26.632 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:26.636 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 45.1390 ms
+2023-06-15 11:42:26.648 +08:00 [INF] Request finished in 63.9563ms 204 
+2023-06-15 11:42:26.658 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:42:26.661 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:26.693 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:26.693 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:42:26.721 +08:00 [INF] Route matched with {action = "GetCategoryList", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[SLMS.Models.Dtos.Category.CategoryDto]]] GetCategoryList() on controller SLMS.API.Controllers.CategoryController (SLMS.API).
+2023-06-15 11:42:26.723 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:27.267 +08:00 [WRN] No type was specified for the decimal column 'Price' on entity type 'EntityBook'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2023-06-15 11:42:27.293 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:27.293 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:27.660 +08:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+2023-06-15 11:42:27.661 +08:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryName]
+FROM [TB_Category] AS [t]
+2023-06-15 11:42:27.693 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SLMS.Models.Dtos.Category.CategoryDto, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 11:42:27.706 +08:00 [INF] Executed action SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API) in 978.1398ms
+2023-06-15 11:42:27.709 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:42:27.711 +08:00 [INF] HTTP GET /api/Category/CategoryList responded 200 in 1121.7669 ms
+2023-06-15 11:42:27.727 +08:00 [INF] Request finished in 1143.1843ms 200 application/json; charset=utf-8
+2023-06-15 11:42:27.858 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:27.865 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:27.869 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 1141.9036ms
+2023-06-15 11:42:27.871 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:27.873 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 1214.0556 ms
+2023-06-15 11:42:27.875 +08:00 [INF] Request finished in 1218.2479ms 200 application/json; charset=utf-8
+2023-06-15 11:42:30.141 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:42:30.145 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:30.148 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 3.0297 ms
+2023-06-15 11:42:30.152 +08:00 [INF] Request finished in 11.2722ms 204 
+2023-06-15 11:42:30.157 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:42:30.160 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:30.163 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:42:30.167 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:36.470 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:36.519 +08:00 [INF] Executed DbCommand (26ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:42:36.530 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:36.538 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:42:36.541 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:36.543 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 6369.9816ms
+2023-06-15 11:42:36.547 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:42:36.549 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 6389.2844 ms
+2023-06-15 11:42:36.552 +08:00 [INF] Request finished in 6395.8695ms 200 application/json; charset=utf-8
+2023-06-15 11:42:39.854 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:42:39.857 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:39.859 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.7904 ms
+2023-06-15 11:42:39.862 +08:00 [INF] Request finished in 7.3962ms 204 
+2023-06-15 11:42:39.866 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:42:39.869 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:39.870 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:39.873 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:39.909 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:39.914 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:39.917 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:39.919 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 41.901ms
+2023-06-15 11:42:39.922 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:39.923 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 55.0164 ms
+2023-06-15 11:42:39.926 +08:00 [INF] Request finished in 60.0325ms 200 application/json; charset=utf-8
+2023-06-15 11:42:44.937 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:42:44.941 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:44.943 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 2.0175 ms
+2023-06-15 11:42:44.946 +08:00 [INF] Request finished in 8.5138ms 204 
+2023-06-15 11:42:44.950 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:42:44.953 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:44.955 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:44.956 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:44.992 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:44.997 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:45.000 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:45.002 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 43.6673ms
+2023-06-15 11:42:45.005 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:45.006 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 53.1422 ms
+2023-06-15 11:42:45.009 +08:00 [INF] Request finished in 58.531ms 200 application/json; charset=utf-8
+2023-06-15 11:42:46.696 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/Query  
+2023-06-15 11:42:46.699 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:46.700 +08:00 [INF] HTTP OPTIONS /api/Book/Query responded 204 in 1.2238 ms
+2023-06-15 11:42:46.702 +08:00 [INF] Request finished in 5.725ms 204 
+2023-06-15 11:42:46.706 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/Query application/json 71
+2023-06-15 11:42:46.708 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:46.709 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:42:46.712 +08:00 [INF] Route matched with {action = "GetBookByAuthor", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SLMS.Models.Dtos.Book.BookDTO]] GetBookByAuthor(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:48.260 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:48.274 +08:00 [INF] Executed DbCommand (5ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t].[CategoryId], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:42:48.281 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:48.286 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__input_CategoryInput_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+WHERE [t].[CategoryId] = @__input_CategoryInput_0
+2023-06-15 11:42:48.290 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:48.292 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API) in 1577.9013ms
+2023-06-15 11:42:48.295 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetBookByAuthor (SLMS.API)'
+2023-06-15 11:42:48.297 +08:00 [INF] HTTP POST /api/Book/Query responded 200 in 1589.3591 ms
+2023-06-15 11:42:48.299 +08:00 [INF] Request finished in 1592.9621ms 200 application/json; charset=utf-8
+2023-06-15 11:42:54.510 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:42:54.512 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:54.513 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.2813 ms
+2023-06-15 11:42:54.515 +08:00 [INF] Request finished in 5.5775ms 204 
+2023-06-15 11:42:54.520 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:42:54.522 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:42:54.524 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:54.525 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:42:54.553 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:42:54.557 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:42:54.560 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:42:54.563 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 34.9689ms
+2023-06-15 11:42:54.565 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:42:54.567 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 44.5224 ms
+2023-06-15 11:42:54.569 +08:00 [INF] Request finished in 49.8033ms 200 application/json; charset=utf-8
+2023-06-15 11:45:21.616 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/Category/CategoryList  
+2023-06-15 11:45:21.617 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:45:21.618 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:21.619 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:21.620 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:45:21.621 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 2.2563 ms
+2023-06-15 11:45:21.626 +08:00 [INF] Request finished in 8.9983ms 204 
+2023-06-15 11:45:21.626 +08:00 [INF] Route matched with {action = "GetCategoryList", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[SLMS.Models.Dtos.Category.CategoryDto]]] GetCategoryList() on controller SLMS.API.Controllers.CategoryController (SLMS.API).
+2023-06-15 11:45:21.631 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:45:21.636 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryName]
+FROM [TB_Category] AS [t]
+2023-06-15 11:45:21.639 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SLMS.Models.Dtos.Category.CategoryDto, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 11:45:21.642 +08:00 [INF] Executed action SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API) in 12.0544ms
+2023-06-15 11:45:21.644 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.CategoryController.GetCategoryList (SLMS.API)'
+2023-06-15 11:45:21.645 +08:00 [INF] HTTP GET /api/Category/CategoryList responded 200 in 27.3908 ms
+2023-06-15 11:45:21.648 +08:00 [INF] Request finished in 32.0461ms 200 application/json; charset=utf-8
+2023-06-15 11:45:21.705 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:45:21.707 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:21.709 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:21.710 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:45:21.719 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:45:21.723 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ISBN], [t].[Author], [t].[Title], [t0].[RemainingQuantity], [t0].[TotalQuantity], [t1].[CategoryName]
+FROM [TB_Book] AS [t]
+LEFT JOIN [TB_Inventory] AS [t0] ON [t].[Id] = [t0].[BookId]
+INNER JOIN [TB_Category] AS [t1] ON [t].[CategoryId] = [t1].[Id]
+2023-06-15 11:45:21.770 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:45:21.773 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:45:21.775 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 62.9406ms
+2023-06-15 11:45:21.777 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:21.779 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 71.8706 ms
+2023-06-15 11:45:21.781 +08:00 [INF] Request finished in 76.3091ms 200 application/json; charset=utf-8
+2023-06-15 11:45:36.348 +08:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Book/BookList  
+2023-06-15 11:45:36.351 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:36.352 +08:00 [INF] HTTP OPTIONS /api/Book/BookList responded 204 in 1.2102 ms
+2023-06-15 11:45:36.354 +08:00 [INF] Request finished in 6.5761ms 204 
+2023-06-15 11:45:36.357 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:45:36.359 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:36.360 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:36.362 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:45:36.391 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:45:36.395 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:45:36.399 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:45:36.401 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 36.253ms
+2023-06-15 11:45:36.404 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:36.405 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 46.7002 ms
+2023-06-15 11:45:36.408 +08:00 [INF] Request finished in 50.7129ms 200 application/json; charset=utf-8
+2023-06-15 11:45:37.332 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/Book/BookList application/json 20
+2023-06-15 11:45:37.333 +08:00 [INF] CORS policy execution successful.
+2023-06-15 11:45:37.335 +08:00 [INF] Executing endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:37.336 +08:00 [INF] Route matched with {action = "GetAllBookList", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetAllBookListAsync(SLMS.Tools.RequestSelect) on controller SLMS.API.Controllers.BookController (SLMS.API).
+2023-06-15 11:45:37.365 +08:00 [INF] Entity Framework Core 3.1.0 initialized 'SLMSDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-15 11:45:37.369 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TB_Book] AS [t]
+2023-06-15 11:45:37.373 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[SLMS.Models.Dtos.Book.BookDTO, SLMS.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-06-15 11:45:37.376 +08:00 [INF] Executed action SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API) in 36.6861ms
+2023-06-15 11:45:37.379 +08:00 [INF] Executed endpoint 'SLMS.API.Controllers.BookController.GetAllBookListAsync (SLMS.API)'
+2023-06-15 11:45:37.380 +08:00 [INF] HTTP POST /api/Book/BookList responded 200 in 46.8144 ms
+2023-06-15 11:45:37.383 +08:00 [INF] Request finished in 51.2342ms 200 application/json; charset=utf-8
+2023-06-15 11:46:11.818 +08:00 [INF] Application is shutting down...
