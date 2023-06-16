@@ -14,9 +14,8 @@ namespace SLMS.Models.SLMS.EntityFrameworkCore
 
 
         public DbSet<EntityBook> Books { get; set; }
-        public DbSet<EntityInventory> Inventorys { get; set; }
         public DbSet<EntityUser> Users{ get; set; }
-        public DbSet<EntityCategory> Categorys { get; set; }
+        public DbSet<EntityCategory> Categories { get; set; }
         public DbSet<EntityBorrowRecord> BorrowRecords { get; set; }
 
 

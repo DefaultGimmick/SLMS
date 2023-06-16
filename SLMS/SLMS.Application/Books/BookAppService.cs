@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SLMS.Models.Dtos.Book;
 using SLMS.Models.Entities;
 using SLMS.Models.SLMS.EntityFrameworkCore;
 using SLMS.Tools;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SLMS.Application.Books
 {
@@ -26,9 +22,9 @@ namespace SLMS.Application.Books
         /// 获取图书列表
         /// </summary>
         /// <returns></returns>
-        public async Task<List<BookDTO>> GetAllBookAsync()
+        public async Task<List<BookDto>> GetAllBookAsync()
         {
-            var query = _dataContext.Books.Select(c => new BookDTO
+            var query = _dataContext.Books.Select(c => new BookDto
             {
                 Id = c.Id,
                 ISBN = c.ISBN,
@@ -65,9 +61,9 @@ namespace SLMS.Application.Books
         /// 获取图书详细
         /// </summary>
         /// <returns></returns>
-        public async Task<BookDetailsDTO> GetBookDetailsAsync(int Id)
+        public async Task<BookDetailsDto> GetBookDetailsAsync(int id)
         {
-            var query = _dataContext.Books.Select(c => new BookDetailsDTO
+            var query = _dataContext.Books.Select(c => new BookDetailsDto
             {
                 Id = c.Id,
                 ISBN = c.ISBN,
@@ -78,7 +74,7 @@ namespace SLMS.Application.Books
                 RemainingQuantity = c.Inventory.RemainingQuantity,
                 TotalQuantity = c.Inventory.TotalQuantity,
                 CategoryName = c.Category.CategoryName
-            }).FirstOrDefaultAsync(c => c.Id == Id);
+            }).FirstOrDefaultAsync(c => c.Id == id);
 
             return await query;
         }
@@ -87,11 +83,11 @@ namespace SLMS.Application.Books
         /// <summary>
         /// 根据条件查询
         /// </summary>
-        /// <param name="queryRequest"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<List<BookDTO>> QueryBookAsync(RequestSelect input)
+        public async Task<List<BookDto>> QueryBookAsync(RequestSelect input)
         {
-            var query = _dataContext.Books.Select(c => new BookDTO
+            var query = _dataContext.Books.Select(c => new BookDto
             {
                 Id = c.Id,
                 ISBN = c.ISBN,
@@ -152,7 +148,7 @@ namespace SLMS.Application.Books
         /// </summary>
         /// <param name="isbn"></param>
         /// <returns></returns>
-        public async Task<EntityBook> FindBookByISBNAsync(string isbn)
+        public async Task<EntityBook> FindBookByisbnAsync(string isbn)
         {
             var user =  _dataContext.Books.FirstOrDefaultAsync(x => x.ISBN == isbn);
             return await user;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SLMS.Models.Dtos.Category
+﻿namespace SLMS.Models.Dtos.Category
 {
     public class CategoryDto
     {

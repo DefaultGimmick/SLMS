@@ -2,10 +2,6 @@
 using SLMS.Models.Dtos.User;
 using SLMS.Models.Entities;
 using SLMS.Models.SLMS.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SLMS.Application.Users
@@ -51,9 +47,9 @@ namespace SLMS.Application.Users
         /// </summary>
         /// <param name="usernumber"></param>
         /// <returns></returns>
-        public async Task<EntityUser> FindUserByNameAsync(string usernumber)
+        public async Task<EntityUser> FindUserByNameAsync(string userNumber)
         {
-            var user = await _dataContext.Users.FirstOrDefaultAsync( x => x.UserNumber == usernumber);
+            var user = await _dataContext.Users.FirstOrDefaultAsync( x => x.UserNumber == userNumber);
             return user;
         }
     }

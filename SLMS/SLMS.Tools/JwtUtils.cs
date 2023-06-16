@@ -10,11 +10,11 @@ namespace SLMS.Tools
 {
     public class JwtUtils
     {
-        private readonly IOptions<Audience> m_Settings;
+        private readonly IOptions<Audience> _settings;
 
         public JwtUtils(IOptions<Audience> settings)
         {
-            m_Settings = settings;
+            _settings = settings;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace SLMS.Tools
         public string CreateToken(string username)
         {
             var now = DateTime.UtcNow;
-            var expires = now.Add(m_Settings.Value.TokenExpiration);
+            var expires = now.Add(_settings.Value.TokenExpiration);
 
             var claims = new Claim[]
             {
@@ -34,12 +34,12 @@ namespace SLMS.Tools
                 new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(m_Settings.Value.Secret));
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_settings.Value.Secret));
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
             var tokenOptions = new JwtSecurityToken(
-                issuer: m_Settings.Value.Iss,
-                audience: m_Settings.Value.Aud,
+                issuer: _settings.Value.Iss,
+                audience: _settings.Value.Aud,
                 claims: claims,
                 notBefore: now,
                 expires: expires,

@@ -5,8 +5,13 @@ using System.Text;
 
 namespace SLMS.Models.Dtos.Book
 {
-    public class BookStorageDTO
+    public class BookDetailsDto
     {
+        /// <summary>
+        /// 主键：ID
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// 图书名称
         /// </summary>
@@ -33,18 +38,19 @@ namespace SLMS.Models.Dtos.Book
         public decimal Price { get; set; }
 
         /// <summary>
+        /// 剩余总数
+        /// </summary>
+        public int RemainingQuantity { get; set; }
+
+        /// <summary>
         /// 总数
         /// </summary>
         public int TotalQuantity { get; set; }
 
         /// <summary>
-        /// 类别id
+        /// 类别名称
         /// </summary>
-        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
-        /// <summary>
-        /// 书架号
-        /// </summary>
-        public int BookshelfNumber { get; set; }
     }
 }

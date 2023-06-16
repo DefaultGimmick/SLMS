@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SLMS.Models.Dtos.Book
 {
-    public class BookBorrowDTO
+    public class BookBorrowDto
     {
 
         /// <summary>

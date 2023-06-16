@@ -1,16 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SLMS.Infrastructure.MessageQueue
 {
-    public class RabbitMQClient
+    public class RabbitMqClient
     {
         private readonly ConnectionFactory _connectionFactory;
         private IConnection _connection;
-        public RabbitMQClient(IOptions<RabbitMQOptions> msg)
+        public RabbitMqClient(IOptions<RabbitMqOptions> msg)
         {
             _connectionFactory = new ConnectionFactory
             {

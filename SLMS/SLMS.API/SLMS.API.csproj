@@ -21,5 +21,10 @@
     <ProjectReference Include="..\SLMS.Tools\SLMS.Tools.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="log\log20230615.log" />
+    <None Remove="log\log20230616.log" />
+  </ItemGroup>
+
 
 </Project>

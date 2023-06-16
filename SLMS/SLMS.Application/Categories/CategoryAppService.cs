@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SLMS.Models.Dtos.Category;
-using SLMS.Models.Entities;
 using SLMS.Models.SLMS.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SLMS.Application.Categories
@@ -25,7 +22,7 @@ namespace SLMS.Application.Categories
         /// <returns></returns>
         public async Task<List<CategoryDto>> GetCategoryListAsync()
         {
-            var query =  _dataContext.Categorys.Select(c => new CategoryDto
+            var query =  _dataContext.Categories.Select(c => new CategoryDto
             {
                 Id = c.Id,
                 CategoryName = c.CategoryName

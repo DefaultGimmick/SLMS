@@ -1,8 +1,5 @@
 ﻿using SLMS.Models.Dtos.User;
 using SLMS.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SLMS.Application.Users
@@ -26,9 +23,9 @@ namespace SLMS.Application.Users
         /// <summary>
         /// 根据用户名查询用户
         /// </summary>
-        /// <param name="usernumber"></param>
+        /// <param name="userNumber"></param>
         /// <returns></returns>
-        public Task<EntityUser> FindUserByNameAsync(string usernumber);
+        public Task<EntityUser> FindUserByNameAsync(string userNumber);
 
     }
 }

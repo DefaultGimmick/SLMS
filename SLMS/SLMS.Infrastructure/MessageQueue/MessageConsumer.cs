@@ -2,14 +2,9 @@
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Threading.Channels;
 using Newtonsoft.Json;
-using SLMS.Models.Dtos.Book;
 using SLMS.Application.Books;
 using SLMS.Models.Entities;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,14 +13,13 @@ namespace SLMS.Infrastructure.MessageQueue
 {
     public class MessageConsumer : BackgroundService
     {
-        private readonly RabbitMQClient _rabbitMQClient;
         private readonly IModel _channel;
         private readonly IServiceProvider _serviceProvider;
 
-        public MessageConsumer(IOptions<RabbitMQOptions> options, IServiceProvider serviceProvider)
+        public MessageConsumer(IOptions<RabbitMqOptions> options, IServiceProvider serviceProvider)
         {
-            _rabbitMQClient = new RabbitMQClient(options);
-            _channel = _rabbitMQClient.CreateChannel();
+            var rabbitMqClient = new RabbitMqClient(options);
+            _channel = rabbitMqClient.CreateChannel();
             _serviceProvider = serviceProvider;
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -39,15 +33,13 @@ namespace SLMS.Infrastructure.MessageQueue
             {
                 try
                 {
-                    using (var scope = _serviceProvider.CreateScope())
-                    {
-                        var result = System.Text.Encoding.UTF8.GetString(e.Body.ToArray());
-                        EntityBook u = (EntityBook)JsonConvert.DeserializeObject(result, typeof(EntityBook));
-                        var _bookAppService = scope.ServiceProvider.GetRequiredService<IBookAppService>();
-                        await _bookAppService.AddBookAsync(u);
-                        _channel.BasicAck(e.DeliveryTag, false);
-                        Console.WriteLine("消费消息：" + result);
-                    }
+                    using var scope = _serviceProvider.CreateScope();
+                    var result = System.Text.Encoding.UTF8.GetString(e.Body.ToArray());
+                    EntityBook u = (EntityBook)JsonConvert.DeserializeObject(result, typeof(EntityBook));
+                    var bookAppService = scope.ServiceProvider.GetRequiredService<IBookAppService>();
+                    await bookAppService.AddBookAsync(u);
+                    _channel.BasicAck(e.DeliveryTag, false);
+                    Console.WriteLine("消费消息：" + result);
                 }
                 catch (Exception ex)
                 {

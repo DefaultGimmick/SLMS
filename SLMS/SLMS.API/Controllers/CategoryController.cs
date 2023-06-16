@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SLMS.Application.Categories;
 using SLMS.Models.Dtos.Category;
-using SLMS.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,7 +22,6 @@ namespace SLMS.API.Controllers
         /// <summary>
         /// 获取类别集合
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("CategoryList")]
         public async Task<ActionResult<List<CategoryDto>>> GetCategoryList()

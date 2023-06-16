@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SLMS.Models.Dtos.Book
+﻿namespace SLMS.Models.Dtos.Book
 {
-    public class BookDTO
+    public class BookStorageDto
     {
         /// <summary>
-        /// 主键：ID
+        /// 图书名称
         /// </summary>
-        public int Id { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// ISBN
@@ -22,14 +18,14 @@ namespace SLMS.Models.Dtos.Book
         public string Author { get; set; }
 
         /// <summary>
-        /// 图书名称
+        /// 出版社
         /// </summary>
-        public string Title { get; set; }
+        public string Publisher { get; set; }
 
         /// <summary>
-        /// 剩余总数
+        /// 价格
         /// </summary>
-        public int RemainingQuantity { get; set; }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// 总数
@@ -42,14 +38,8 @@ namespace SLMS.Models.Dtos.Book
         public int CategoryId { get; set; }
 
         /// <summary>
-        /// 类别名称
+        /// 书架号
         /// </summary>
-        public string CategoryName { get; set; }
-
-        /// <summary>
-        /// 查询到总条数
-        /// </summary>
-        public int TotalCount { get; set; }
+        public int BookshelfNumber { get; set; }
     }
 }
-

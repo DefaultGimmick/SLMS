@@ -1,17 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SLMS.Models.Entities;
-using SLMS.Models.Dtos;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using SLMS.Models.Dtos.User;
-using SLMS.Application.Books;
 using SLMS.Application.Users;
 using Microsoft.AspNetCore.Cors;
 using System;
 using Microsoft.Extensions.Options;
 using SLMS.Tools;
-using Newtonsoft.Json;
 using SLMS.Infrastructure.Caching;
 
 
@@ -24,20 +19,20 @@ namespace SLMS.API.Controllers
     {
 
         private readonly IUserAppService _userAppService;
-        private readonly IOptions<Audience> m_Settings;
-        private readonly RedisContext m_redisContext;
-        private readonly JwtUtils m_Token;
+        private readonly IOptions<Audience> _settings;
+        private readonly RedisContext _redisContext;
+        private readonly JwtUtils _jwtUtils;
 
-        public AuthController(IUserAppService userAppService, RedisContext redisContext, IOptions<Audience> settings, JwtUtils token)
+        public AuthController(IUserAppService userAppService, RedisContext redisContext, IOptions<Audience> settings, JwtUtils jwtUtils)
         {
             _userAppService = userAppService;
-            m_redisContext = redisContext;
-            m_Settings = settings;
-            m_Token = token;
+            _redisContext = redisContext;
+            _settings = settings;
+            _jwtUtils = jwtUtils;
         }
 
         /// <summary>
-        /// 登录接口
+        /// 用户登录
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -48,20 +43,20 @@ namespace SLMS.API.Controllers
             {
                 return Unauthorized("Invalid username or password.");
             }
-            var token = m_Token.CreateToken(input.UserNumber);
+            var token = _jwtUtils.CreateToken(input.UserNumber);
             var user = await _userAppService.FindUserByNameAsync(input.UserNumber);
-            await m_redisContext.SetObjectAsync(token, user);
-            await m_redisContext.SetTimeoutAsync("UserInfo", new TimeSpan(0, 15, 0));
+            await _redisContext.SetObjectAsync(token, user);
+            await _redisContext.SetTimeoutAsync("UserInfo", new TimeSpan(0, 15, 0));
             
-            return Ok(new { access_token = token, expires_in = m_Settings.Value.TokenExpiration.TotalSeconds });
+            return Ok(new { access_token = token, expires_in = _settings.Value.TokenExpiration.TotalSeconds });
         }
 
         /// <summary>
-        /// 注册接口
+        /// 用户注册
         /// </summary>
         /// <param name="input"></param>
         [HttpPost("Register")]
-        public async Task UserLogin(RegisterRequestDTO input)
+        public async Task UserRegister(RegisterRequestDTO input)
         {
             var user = new EntityUser
             {

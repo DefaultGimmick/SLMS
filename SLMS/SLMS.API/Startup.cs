@@ -35,25 +35,25 @@ namespace SLMS.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #region ÅäÖÃJwt
-            //»ñÈ¡appsettings.jsonÎÄ¼şÖĞÅäÖÃÈÏÖ¤ÖĞÃÜÔ¿£¨Secret£©¸úÊÜÖÚ£¨Aud£©ĞÅÏ¢
+            #region é…ç½®Jwt
+            //è·å–appsettings.jsonæ–‡ä»¶ä¸­é…ç½®è®¤è¯ä¸­å¯†é’¥ï¼ˆSecretï¼‰è·Ÿå—ä¼—ï¼ˆAudï¼‰ä¿¡æ¯
             var audienceConfig = Configuration.GetSection("Audience");
-            //»ñÈ¡°²È«ÃØÔ¿
+            //è·å–å®‰å…¨ç§˜é’¥
             var signingKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(audienceConfig["Secret"]));
-            //tokenÒªÑéÖ¤µÄ²ÎÊı¼¯ºÏ
+            //tokenè¦éªŒè¯çš„å‚æ•°é›†åˆ
             var tokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
             {
-                ValidateIssuerSigningKey = true,//±ØĞëÑéÖ¤°²È«ÃØÔ¿
-                IssuerSigningKey = signingKey,//¸³Öµ°²È«ÃØÔ¿
-                ValidateIssuer = true,//±ØĞëÑéÖ¤Ç©·¢ÈË
-                ValidIssuer = audienceConfig["Iss"],//¸³ÖµÇ©·¢ÈË
-                ValidateAudience = true,//±ØĞëÑéÖ¤ÊÜÖÚ
-                ValidAudience = audienceConfig["Aud"],//¸³ÖµÊÜÖÚ
-                ValidateLifetime = true,//ÊÇ·ñÑéÖ¤TokenÓĞĞ§ÆÚ£¬Ê¹ÓÃµ±Ç°Ê±¼äÓëTokenµÄClaimsÖĞµÄNotBeforeºÍExpires¶Ô±È
-                ClockSkew = TimeSpan.Zero,//ÔÊĞíµÄ·şÎñÆ÷Ê±¼äÆ«ÒÆÁ¿
-                RequireExpirationTime = true,//ÊÇ·ñÒªÇóTokenµÄClaimsÖĞ±ØĞë°üº¬Expires
+                ValidateIssuerSigningKey = true,//å¿…é¡»éªŒè¯å®‰å…¨ç§˜é’¥
+                IssuerSigningKey = signingKey,//èµ‹å€¼å®‰å…¨ç§˜é’¥
+                ValidateIssuer = true,//å¿…é¡»éªŒè¯ç­¾å‘äºº
+                ValidIssuer = audienceConfig["Iss"],//èµ‹å€¼ç­¾å‘äºº
+                ValidateAudience = true,//å¿…é¡»éªŒè¯å—ä¼—
+                ValidAudience = audienceConfig["Aud"],//èµ‹å€¼å—ä¼—
+                ValidateLifetime = true,//æ˜¯å¦éªŒè¯Tokenæœ‰æ•ˆæœŸï¼Œä½¿ç”¨å½“å‰æ—¶é—´ä¸Tokençš„Claimsä¸­çš„NotBeforeå’ŒExpireså¯¹æ¯”
+                ClockSkew = TimeSpan.Zero,//å…è®¸çš„æœåŠ¡å™¨æ—¶é—´åç§»é‡
+                RequireExpirationTime = true,//æ˜¯å¦è¦æ±‚Tokençš„Claimsä¸­å¿…é¡»åŒ…å«Expires
             };
-            //Ìí¼Ó·şÎñÑéÖ¤£¬·½°¸ÎªTestKey
+            //æ·»åŠ æœåŠ¡éªŒè¯ï¼Œæ–¹æ¡ˆä¸ºTestKey
             services.AddAuthentication(o =>
             {
                 o.DefaultScheme = "TestKey";
@@ -61,7 +61,7 @@ namespace SLMS.API
             .AddJwtBearer("TestKey", x =>
             {
                 x.RequireHttpsMetadata = false;
-                //ÔÚJwtBearerOptionsÅäÖÃÖĞ£¬IssuerSigningKey(Ç©ÃûÃØÔ¿)¡¢ValidIssuer(Token°ä·¢»ú¹¹)¡¢ValidAudience(°ä·¢¸øË­)Èı¸ö²ÎÊıÊÇ±ØĞëµÄ¡£
+                //åœ¨JwtBearerOptionsé…ç½®ä¸­ï¼ŒIssuerSigningKey(ç­¾åç§˜é’¥)ã€ValidIssuer(Tokené¢å‘æœºæ„)ã€ValidAudience(é¢å‘ç»™è°)ä¸‰ä¸ªå‚æ•°æ˜¯å¿…é¡»çš„ã€‚
                 x.TokenValidationParameters = tokenValidationParameters;
             });
 
@@ -69,65 +69,65 @@ namespace SLMS.API
             services.Configure<Audience>(Configuration.GetSection("Audience"));
             #endregion
 
-            #region ÅäÖÃ¿çÓò
+            #region é…ç½®è·¨åŸŸ
             services.AddCors(options =>
                 {
                     options.AddPolicy("CorsPolicy", builder =>
                     {
-                        builder.AllowAnyOrigin() //ÔÊĞíËùÓĞOrigin²ßÂÔ
+                        builder.AllowAnyOrigin() //å…è®¸æ‰€æœ‰Originç­–ç•¥
 
-                               //ÔÊĞíËùÓĞÇëÇó·½·¨£ºGet,Post,Put,Delete
+                               //å…è®¸æ‰€æœ‰è¯·æ±‚æ–¹æ³•ï¼šGet,Post,Put,Delete
                                .AllowAnyMethod()
 
-                               //ÔÊĞíËùÓĞÇëÇóÍ·:application/json
+                               //å…è®¸æ‰€æœ‰è¯·æ±‚å¤´:application/json
                                .AllowAnyHeader();
                     });
                 });
             #endregion
 
-            #region ÅäÖÃSwagger
+            #region é…ç½®Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("V1", new OpenApiInfo
                 {
-                    Title = "Swagger½Ó¿ÚÎÄµµ",
+                    Title = "Swaggeræ¥å£æ–‡æ¡£",
                     Version = "V1",
-                    Description = "²âÊÔWeb API",
+                    Description = "æµ‹è¯•Web API",
                 });
             });
             #endregion
 
-            #region ÅäÖÃÈÕÖ¾
+            #region é…ç½®æ—¥å¿—
             services.AddLogging(logBuilder => {
                 logBuilder.ClearProviders();
             });
             #endregion
 
-            #region ÅäÖÃSql Server
+            #region é…ç½®Sql Server
             services.AddDbContext<SLMSDBContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("SLMSDB")));
             #endregion
 
-            #region ÅäÖÃRedis
+            #region é…ç½®Redis
             services.AddSingleton<RedisContext>();
             #endregion
 
-            #region ÅäÖÃRabbitMQ
-            services.Configure<RabbitMQOptions>(Configuration.GetSection("RabbitMQOptions"));
-            services.AddSingleton<RabbitMQClient>();
-            services.AddSingleton<RabbitMQOptions>();
+            #region é…ç½®RabbitMq
+            services.Configure<RabbitMqOptions>(Configuration.GetSection("RabbitMQOptions"));
+            services.AddSingleton<RabbitMqClient>();
+            services.AddSingleton<RabbitMqOptions>();
             services.AddSingleton<MessageProducer>();
             services.AddSingleton<MessageConsumer>();
             #endregion
 
-            #region ÅäÖÃ·şÎñÀà
+            #region é…ç½®æœåŠ¡ç±»
             services.AddScoped<IBookAppService, BookAppService>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<ICategoryAppService, CategoryAppService>();
             services.AddScoped<JwtUtils>();
             #endregion
 
-            #region Ìí¼ÓSession
+            #region æ·»åŠ Session
             services.AddSession(config =>
             {
                 config.Cookie.IsEssential = true;
@@ -160,8 +160,8 @@ namespace SLMS.API
             app.UseRouting();
             app.UseCors();
 
-            app.UseAuthentication(); // ÈÏÖ¤
-            app.UseAuthorization();  // ÊÚÈ¨
+            app.UseAuthentication(); // è®¤è¯
+            app.UseAuthorization();  // æˆæƒ
 
             app.UseEndpoints(endpoints =>
             {

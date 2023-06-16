@@ -1,8 +1,5 @@
 ﻿using SLMS.Models.Dtos.Category;
-using SLMS.Models.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SLMS.Application.Categories

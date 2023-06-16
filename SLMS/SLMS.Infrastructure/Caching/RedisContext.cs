@@ -1,21 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SLMS.Infrastructure.Caching
 {
     public class RedisContext
     {
-        private readonly string m_ConnectionString;
+        private readonly string _connectionString;
         public RedisContext(Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
-            m_ConnectionString = configuration["ConnectionStrings:RedisServerUrl"];
+            _connectionString = configuration["ConnectionStrings:RedisServerUrl"];
         }
         private StackExchange.Redis.ConnectionMultiplexer GetConnection()
         {
-            var connection = StackExchange.Redis.ConnectionMultiplexer.Connect(m_ConnectionString);
+            var connection = StackExchange.Redis.ConnectionMultiplexer.Connect(_connectionString);
             return connection;
         }
 
@@ -29,7 +28,7 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> SetObjectAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
             var db = connection.GetDatabase();
             var serializedValue = JsonConvert.SerializeObject(value);
             await db.StringSetAsync(key, serializedValue, expiry);
@@ -44,7 +43,7 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<T> GetObjectAsync<T>(string key)
         {
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
             var db = connection.GetDatabase();
             var serializedValue = await db.StringGetAsync(key);
             if (serializedValue.IsNullOrEmpty)
@@ -65,7 +64,7 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> SetObjectListAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
             var db = connection.GetDatabase();
             var serializedValue = JsonConvert.SerializeObject(value);
             await db.ListLeftPushAsync(key, serializedValue);
@@ -84,7 +83,7 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> ObjectListRemoveAsync(string key, string value)
         {
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
             var db = connection.GetDatabase();
             await db.ListRemoveAsync(key, value);
             return true;
@@ -102,7 +101,7 @@ namespace SLMS.Infrastructure.Caching
         {
             var serializedOldValue = JsonConvert.SerializeObject(oldValue);
             var serializedNewValue = JsonConvert.SerializeObject(newValue);
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
             var db = connection.GetDatabase();
             var length = db.ListLength(key);
             for (var i = 0; i < length; i++)
@@ -127,7 +126,7 @@ namespace SLMS.Infrastructure.Caching
         public async Task<List<T>> GetObjectListAsync<T>(string key)
         {
             var list = new List<T>();
-            using var connection = GetConnection();
+            await using var connection = GetConnection();
 
             var db = connection.GetDatabase();
             var len = await db.ListLengthAsync(key);
@@ -150,9 +149,9 @@ namespace SLMS.Infrastructure.Caching
         /// <param name="expiry">超时时间</param>
         public async Task SetTimeoutAsync(string keyName, TimeSpan expiry)
         {
-            using var connection = GetConnection();
-            var db = connection.GetDatabase();
-            var result = await db.KeyExpireAsync(keyName, expiry);
+            await using var connection = GetConnection();
+            var db = connection.GetDatabase(); 
+            await db.KeyExpireAsync(keyName, expiry);
         }
     }
 }
