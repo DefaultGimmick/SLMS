@@ -84,7 +84,7 @@ namespace SLMS.API.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost("Query")]
-        public async Task<ActionResult<BookDTO>> GetBookByAuthor(RequestSelect input)
+        public async Task<ActionResult> GetBookByAuthor(RequestSelect input)
         {
             var bookDTOs = await _bookAppService.QueryBookAsync(input);
             var bookCount = await _bookAppService.QueryBookCountByInputAsync(input);

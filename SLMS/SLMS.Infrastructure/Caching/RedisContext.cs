@@ -19,7 +19,6 @@ namespace SLMS.Infrastructure.Caching
             return connection;
         }
 
-
         /// <summary>
         /// 插入对象
         /// </summary>
@@ -30,13 +29,11 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> SetObjectAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            using (var connection = GetConnection())
-            {
-                var db = connection.GetDatabase();
-                var serializedValue = JsonConvert.SerializeObject(value);
-                await db.StringSetAsync(key, serializedValue, expiry);
-                return true;
-            }
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            var serializedValue = JsonConvert.SerializeObject(value);
+            await db.StringSetAsync(key, serializedValue, expiry);
+            return true;
         }
 
         /// <summary>
@@ -47,16 +44,14 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<T> GetObjectAsync<T>(string key)
         {
-            using (var connection = GetConnection())
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            var serializedValue = await db.StringGetAsync(key);
+            if (serializedValue.IsNullOrEmpty)
             {
-                var db = connection.GetDatabase();
-                var serializedValue = await db.StringGetAsync(key);
-                if (serializedValue.IsNullOrEmpty)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<T>(serializedValue);
+                return default;
             }
+            return JsonConvert.DeserializeObject<T>(serializedValue);
         }
 
 
@@ -70,17 +65,15 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> SetObjectListAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            using (var connection = GetConnection())
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            var serializedValue = JsonConvert.SerializeObject(value);
+            await db.ListLeftPushAsync(key, serializedValue);
+            if (expiry.HasValue)
             {
-                var db = connection.GetDatabase();
-                var serializedValue = JsonConvert.SerializeObject(value);
-                await db.ListLeftPushAsync(key, serializedValue);
-                if (expiry.HasValue)
-                {
-                    await db.KeyExpireAsync(key, expiry);
-                }
-                return true;
+                await db.KeyExpireAsync(key, expiry);
             }
+            return true;
         }
 
         /// <summary>
@@ -91,12 +84,10 @@ namespace SLMS.Infrastructure.Caching
         /// <returns></returns>
         public async Task<bool> ObjectListRemoveAsync(string key, string value)
         {
-            using (var connection = GetConnection())
-            {
-                var db = connection.GetDatabase();
-                await db.ListRemoveAsync(key, value);
-                return true;
-            }
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            await db.ListRemoveAsync(key, value);
+            return true;
         }
 
         /// <summary>
@@ -111,21 +102,19 @@ namespace SLMS.Infrastructure.Caching
         {
             var serializedOldValue = JsonConvert.SerializeObject(oldValue);
             var serializedNewValue = JsonConvert.SerializeObject(newValue);
-            using (var connection = GetConnection())
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            var length = db.ListLength(key);
+            for (var i = 0; i < length; i++)
             {
-                var db = connection.GetDatabase();
-                var length = db.ListLength(key);
-                for (var i = 0; i < length; i++)
+                var valueIndex = await db.ListGetByIndexAsync(key, i);
+                if (!valueIndex.IsNullOrEmpty && valueIndex == serializedOldValue)
                 {
-                    var valueIndex = await db.ListGetByIndexAsync(key, i);
-                    if (!valueIndex.IsNullOrEmpty && valueIndex == serializedOldValue)
-                    {
-                        await db.ListSetByIndexAsync(key, i, serializedNewValue);
-                        return true;
-                    }
+                    await db.ListSetByIndexAsync(key, i, serializedNewValue);
+                    return true;
                 }
-                return false;
             }
+            return false;
         }
 
 
@@ -138,18 +127,17 @@ namespace SLMS.Infrastructure.Caching
         public async Task<List<T>> GetObjectListAsync<T>(string key)
         {
             var list = new List<T>();
-            using (var connection = GetConnection())
+            using var connection = GetConnection();
+
+            var db = connection.GetDatabase();
+            var len = await db.ListLengthAsync(key);
+            for (var i = 0; i < len; i++)
             {
-                var db = connection.GetDatabase();
-                var len = await db.ListLengthAsync(key);
-                for (var i = 0; i < len; i++)
+                var serializedValue = await db.ListGetByIndexAsync(key, i);
+                if (!serializedValue.IsNullOrEmpty)
                 {
-                    var serializedValue = await db.ListGetByIndexAsync(key, i);
-                    if (!serializedValue.IsNullOrEmpty)
-                    {
-                        var value = JsonConvert.DeserializeObject<T>(serializedValue);
-                        list.Add(value);
-                    }
+                    var value = JsonConvert.DeserializeObject<T>(serializedValue);
+                    list.Add(value);
                 }
             }
             return list;
@@ -162,11 +150,9 @@ namespace SLMS.Infrastructure.Caching
         /// <param name="expiry">超时时间</param>
         public async Task SetTimeoutAsync(string keyName, TimeSpan expiry)
         {
-            using (var connection = GetConnection())
-            {
-                var db = connection.GetDatabase();
-                var result = await db.KeyExpireAsync(keyName, expiry);
-            }
+            using var connection = GetConnection();
+            var db = connection.GetDatabase();
+            var result = await db.KeyExpireAsync(keyName, expiry);
         }
     }
 }
