@@ -37,7 +37,7 @@ namespace SLMS.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public async Task<IActionResult> Register(LoginRequestDTO input)
+        public async Task<IActionResult> UserLogin(LoginRequestDTO input)
         {
             if (! await _userAppService.ValidateUserAsync(input))
             {
